@@ -82,8 +82,7 @@ export default function Home() {
       <header className={styles.header}>
         <div>
           <div className={styles.brandLine}>
-            <h1>SPEED CANVAS</h1>
-            <span className={styles.byline}>by gianx-labs</span>
+            <span className={styles.byline}>SPEED CANVAS   by Gianx-labs</span>
           </div>
 
           <h1>
