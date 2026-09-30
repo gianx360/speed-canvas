@@ -155,7 +155,8 @@
   }
 
   .workspace {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
   .header {
@@ -166,16 +167,27 @@
     display: none;
   }
 
-  .canvasStage {
-    min-height: 300px;
-    padding: 15px;
+  .canvasArea {
+    order: 1;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    align-self: stretch;
+
+    background: #151515;
+    border: 1px solid #262626;
   }
 
-  .canvasArea {
-  position: static;
-  } 
+  .canvasStage {
+    min-height: 0;
+    padding: 12px;
+  }
 
+  .sidebar {
+    order: 2;
+  }
 }
+
 
 .sidebar {
   display: flex;
