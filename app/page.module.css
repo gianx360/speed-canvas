@@ -16,12 +16,7 @@
   padding-bottom: 24px;
 }
 
-.brand {
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: #888;
-  margin-bottom: 14px;
-}
+
 
 .header h1 {
   margin: 0;
@@ -203,11 +198,24 @@
 }
 
 .byline {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+
   font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
   opacity: 0.5;
-  text-transform: lowercase;
+}
+
+.brandName {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.brandCredit {
+  text-transform: none;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
 }
 
 .aboutLink {
