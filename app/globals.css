@@ -24,3 +24,434 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+.controlPanel {
+  background: #151515;
+  border: 1px solid #262626;
+}
+
+.panelHeader {
+  padding: 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #292929;
+}
+
+.panelHeader h2 {
+  margin: 5px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.17em;
+  color: #666;
+}
+
+.seedIndicator {
+  font-family: monospace;
+  color: #777;
+  font-size: 10px;
+}
+
+.controlSection {
+  padding: 18px;
+  border-bottom: 1px solid #292929;
+}
+
+.controlLabel {
+  display: block;
+  color: #d5d5d0;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.controlValue {
+  color: #777;
+  font-size: 10px;
+}
+
+.sectionTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 7px;
+}
+
+.numberInput,
+.hexInput {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #343434;
+  background: #0d0d0d;
+  color: #eee;
+  padding: 10px;
+  outline: none;
+  font-family: monospace;
+}
+
+.numberInput:focus,
+.hexInput:focus {
+  border-color: #777;
+}
+
+.smallButton,
+.secondaryButton,
+.presetGrid button {
+  border: 1px solid #383838;
+  background: #202020;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.smallButton {
+  padding: 0 13px;
+}
+
+.controlHelp {
+  margin: 9px 0 0;
+  color: #626262;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.paletteList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.paletteItem {
+  display: grid;
+  grid-template-columns: 40px 1fr 32px;
+  gap: 5px;
+}
+
+.colourPicker {
+  width: 40px;
+  height: 38px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.colourPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colourPicker::-webkit-color-swatch {
+  border: 1px solid #444;
+}
+
+.hexInput {
+  text-transform: uppercase;
+}
+
+.removeButton {
+  border: 1px solid #333;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.removeButton:hover {
+  color: white;
+  border-color: #777;
+}
+
+.removeButton:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.secondaryButton {
+  width: 100%;
+  padding: 9px;
+}
+
+.rangeInput {
+  width: 100%;
+  accent-color: #e8e8e2;
+  cursor: pointer;
+}
+
+.rangeLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: #555;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dimensionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.miniLabel {
+  display: block;
+  color: #555;
+  font-size: 8px;
+  margin-bottom: 5px;
+  letter-spacing: 0.1em;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.presetGrid button {
+  padding: 7px 3px;
+  font-size: 9px;
+}
+
+.generateButton {
+  width: calc(100% - 36px);
+  margin: 18px;
+  padding: 14px;
+
+  border: 0;
+  background: #ededE8;
+  color: #111;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.generateButton:hover {
+  background: white;
+}
+
+button {
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
+button:hover:not(:disabled) {
+  border-color: #666;
+}
+
+
+.paletteWeightItem {
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #242424;
+}
+
+.weightRow {
+  display: grid;
+  grid-template-columns: 42px 1fr 32px;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+}
+
+.weightRow span {
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.weightRow input {
+  width: 100%;
+  accent-color: #ddd;
+}
+
+.weightRow strong {
+  color: #888;
+  font-size: 9px;
+  font-weight: 400;
+  text-align: right;
+}
+
+.distributionGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+}
+
+.distributionButton {
+  padding: 8px 2px;
+  border: 1px solid #333;
+  background: #1d1d1d;
+  color: #777;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.distributionButton.active {
+  background: #eeeeea;
+  color: #111;
+  border-color: #eeeeea;
+}
+
+
+.exportPanel {
+  background: #151515;
+  border: 1px solid #262626;
+}
+
+.exportHeader {
+  padding: 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid #292929;
+}
+
+.exportHeader h2 {
+  margin: 5px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.exportMegapixels {
+  font-family: monospace;
+  font-size: 10px;
+  color: #777;
+}
+
+.exportSection {
+  padding: 18px;
+  border-bottom: 1px solid #292929;
+}
+
+.formatGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 5px;
+}
+
+.formatButton {
+  min-height: 58px;
+  border: 1px solid #333;
+  background: #1c1c1c;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.formatButton strong {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.formatButton span {
+  font-size: 6px;
+  letter-spacing: 0.1em;
+}
+
+.formatButton.active {
+  background: #ededE8;
+  border-color: #ededE8;
+  color: #111;
+}
+
+.exportScaleGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 7px;
+}
+
+.exportScaleGrid button {
+  border: 1px solid #333;
+  background: #1d1d1d;
+  color: #888;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.exportInfo {
+  color: #666;
+  font-family: monospace;
+  font-size: 9px;
+  margin: 10px 0 0;
+}
+
+.vectorNotice {
+  margin: 18px;
+  padding: 12px;
+  border: 1px solid #354237;
+  background: #182019;
+}
+
+.vectorNotice strong {
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  color: #8eaa91;
+}
+
+.vectorNotice p {
+  color: #748277;
+  font-size: 9px;
+  line-height: 1.5;
+  margin: 7px 0 0;
+}
+
+.exportWarning {
+  margin: 18px;
+  padding: 12px;
+  border: 1px solid #59492d;
+  background: #211c13;
+  color: #a9936a;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.exportError {
+  margin: 18px;
+  padding: 12px;
+  background: #271515;
+  border: 1px solid #572b2b;
+  color: #bf8585;
+  font-size: 9px;
+}
+
+.exportButton {
+  width: calc(100% - 36px);
+  margin: 18px;
+  padding: 14px;
+  border: 0;
+  background: #ededE8;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exportButton:hover:not(:disabled) {
+  background: white;
+}
+
+.exportButton:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}

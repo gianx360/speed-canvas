@@ -1,69 +1,173 @@
-import Image from "next/image";
+"use client";
+
+import { useMemo, useState } from "react";
+
+import ArtCanvas from "@/components/ArtCanvas";
+import ControlPanel from "@/components/ControlPanel";
+
+import ExportPanel from "@/components/ExportPanel";
+
+import { generateArtwork } from "@/lib/generator";
+
+import type { ArtworkSettings } from "@/types/artwork";
+
+import styles from "./page.module.css";
+
+const INITIAL_SETTINGS: ArtworkSettings = {
+  seed: 839251,
+
+  width: 3000,
+  height: 2000,
+
+  palette: [
+    {
+      id: "blue",
+      colour: "#172A3A",
+      weight: 20,
+    },
+    {
+      id: "green",
+      colour: "#436436",
+      weight: 35,
+    },
+    {
+      id: "earth",
+      colour: "#9B6A35",
+      weight: 18,
+    },
+    {
+      id: "gold",
+      colour: "#D9B44A",
+      weight: 10,
+    },
+    {
+      id: "light",
+      colour: "#DAD7CD",
+      weight: 5,
+    },
+  ],
+
+  minLineHeight: 2,
+  maxLineHeight: 90,
+
+  thicknessDistribution: "fine",
+
+  persistence: 0.35,
+
+  colourVariation: 0.08,
+};
 
 export default function Home() {
+  const [settings, setSettings] =
+    useState<ArtworkSettings>(
+      INITIAL_SETTINGS
+    );
+
+  const artwork = useMemo(
+    () => generateArtwork(settings),
+    [settings]
+  );
+
+  function generateNewComposition() {
+    setSettings((current) => ({
+      ...current,
+      seed: Math.floor(
+        Math.random() * 2_147_483_647
+      ),
+    }));
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className={styles.page}>
+      <header className={styles.header}>
+        <div>
+          <div className={styles.brand}>
+            SPEED CANVAS
+          </div>
+
+          <h1>
+            Studies in colour,
+            <br />
+            motion &amp; velocity.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className={styles.headerMeta}>
+          GENERATIVE ART SYSTEM
+          <br />
+          V0.2
         </div>
-      </main>
-    </div>
+      </header>
+
+      <div className={styles.workspace}>
+        <div className={styles.sidebar}>
+  <ControlPanel
+    settings={settings}
+    onChange={setSettings}
+    onNewComposition={
+      generateNewComposition
+    }
+  />
+
+  <ExportPanel
+    artwork={artwork}
+  />
+</div>
+
+        <section
+          className={styles.canvasArea}
+        >
+          <div className={styles.canvasToolbar}>
+            <div>
+              <span>LIVE COMPOSITION</span>
+
+              <strong>
+                {settings.width.toLocaleString()}
+                {" × "}
+                {settings.height.toLocaleString()}
+              </strong>
+            </div>
+
+            <div>
+              <span>SEED</span>
+
+              <strong>{settings.seed}</strong>
+            </div>
+          </div>
+
+          <div
+            className={styles.canvasStage}
+          >
+            <div
+              className={styles.artworkFrame}
+              style={{
+                aspectRatio: `${settings.width} / ${settings.height}`,
+              }}
+            >
+              <ArtCanvas
+                artwork={artwork}
+              />
+            </div>
+          </div>
+
+          <div
+            className={styles.canvasFooter}
+          >
+            <span>
+              {
+                artwork.streaks.length
+              }{" "}
+              STREAKS
+            </span>
+
+            <span>
+              SVG VECTOR PREVIEW
+            </span>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
+
+

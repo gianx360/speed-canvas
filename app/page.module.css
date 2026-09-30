@@ -1,0 +1,172 @@
+.page {
+  min-height: 100vh;
+  background: #0c0c0c;
+  color: #f2f2ee;
+  padding: 28px;
+}
+
+.header {
+  max-width: 1800px;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  border-bottom: 1px solid #2b2b2b;
+  padding-bottom: 24px;
+}
+
+.brand {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(32px, 4vw, 65px);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+}
+
+.headerMeta {
+  color: #666;
+  font-size: 10px;
+  line-height: 1.7;
+  letter-spacing: 0.13em;
+  text-align: right;
+}
+
+.workspace {
+  max-width: 1800px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.canvasArea {
+  min-width: 0;
+  background: #151515;
+  border: 1px solid #262626;
+}
+
+.canvasToolbar {
+  min-height: 64px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #282828;
+}
+
+.canvasToolbar div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.canvasToolbar div:last-child {
+  text-align: right;
+}
+
+.canvasToolbar span {
+  color: #666;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.canvasToolbar strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.canvasStage {
+  padding: 34px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image:
+    linear-gradient(
+      45deg,
+      #181818 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      -45deg,
+      #181818 25%,
+      transparent 25%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 75%,
+      #181818 75%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 75%,
+      #181818 75%
+    );
+
+  background-size: 20px 20px;
+
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
+}
+
+.artworkFrame {
+  width: 100%;
+  max-height: 75vh;
+  background: black;
+  box-shadow:
+    0 30px 80px
+      rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+.canvasFooter {
+  border-top: 1px solid #282828;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 16px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .headerMeta {
+    display: none;
+  }
+
+  .canvasStage {
+    min-height: 300px;
+    padding: 15px;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
