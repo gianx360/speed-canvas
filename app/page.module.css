@@ -194,3 +194,34 @@
   flex-direction: column;
   gap: 18px;
 }
+
+.brandLine {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.byline {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+  text-transform: lowercase;
+}
+
+.aboutLink {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.55;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.aboutLink:hover {
+  opacity: 1;
+}

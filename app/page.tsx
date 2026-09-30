@@ -81,8 +81,9 @@ export default function Home() {
     <main className={styles.page}>
       <header className={styles.header}>
         <div>
-          <div className={styles.brand}>
-            SPEED CANVAS
+          <div className={styles.brandLine}>
+            <h1>SPEED CANVAS</h1>
+            <span className={styles.byline}>by gianx-labs</span>
           </div>
 
           <h1>
@@ -98,6 +99,10 @@ export default function Home() {
           V0.2
         </div>
       </header>
+
+            <a href="/about/" className={styles.aboutLink}>
+              About this experiment ↗
+            </a>
 
       <div className={styles.workspace}>
         <div className={styles.sidebar}>
