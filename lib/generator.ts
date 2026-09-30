@@ -250,16 +250,18 @@ export function generateArtwork(
       previousPaletteIndex !== null &&
       random() < settings.persistence;
 
-    if (shouldPersist) {
-      paletteIndex =
-        previousPaletteIndex;
-    } else {
-      paletteIndex =
-        chooseWeightedPaletteIndex(
-          settings.palette,
-          random
-        );
-    }
+          if (
+        shouldPersist &&
+        previousPaletteIndex !== null
+      ) {
+        paletteIndex = previousPaletteIndex;
+      } else {
+        paletteIndex =
+          chooseWeightedPaletteIndex(
+            settings.palette,
+            random
+          );
+      }
 
     const paletteColour =
       settings.palette[

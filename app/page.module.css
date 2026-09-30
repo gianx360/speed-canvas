@@ -52,6 +52,13 @@
   min-width: 0;
   background: #151515;
   border: 1px solid #262626;
+
+  /* Keep the artwork visible while scrolling through controls */
+  position: sticky;
+  top: 20px;
+
+  /* Prevent the grid from stretching it vertically */
+  align-self: start;
 }
 
 .canvasToolbar {
@@ -163,6 +170,11 @@
     min-height: 300px;
     padding: 15px;
   }
+
+  .canvasArea {
+  position: static;
+  } 
+
 }
 
 .sidebar {
